@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvarez's NewsFix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1A1410;
+            --paper: #F6F1E7;
+            --rule: #1A1410;
+            --accent: #B5261E;
+            --muted: #6B6560;
+            --tag-bg: #1A1410;
+            --tag-text: #F6F1E7;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* MASTHEAD */
+        .masthead {
+            border-top: 6px solid var(--rule);
+            border-bottom: 3px solid var(--rule);
+            padding: 1.5rem 0 1rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .masthead-eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .masthead h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            color: var(--ink);
+        }
+
+        .masthead-rule {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 0.8rem auto 0.5rem;
+            width: 80%;
+        }
+
+        .masthead-dateline {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+
+        /* SUBHEAD BAR */
+        .subhead-bar {
+            background: var(--ink);
+            color: var(--paper);
+            text-align: center;
+            padding: 0.45rem 1rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-bottom: 1px solid var(--rule);
+            padding: 2rem 0 0.4rem;
+            margin-bottom: 0;
+        }
+
+        /* STORY */
+        .story {
+            border-bottom: 1px solid #C8C2B5;
+            padding: 1.4rem 0;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+        }
+
+        .story-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .rank {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.05rem 0.4rem;
+            min-width: 2rem;
+            text-align: center;
+        }
+
+        .category {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 0.15rem 0.5rem;
+        }
+
+        .source {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+
+        .date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--muted);
+            margin-left: auto;
+        }
+
+        .headline {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 0.4rem;
+        }
+
+        .headline a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .headline a:hover {
+            border-bottom-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .tags {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.62rem;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+        }
+
+        .empty {
+            text-align: center;
+            color: var(--muted);
+            font-style: italic;
+            padding: 3rem 0;
+        }
+
+        /* FOOTER */
+        .footer {
+            border-top: 3px solid var(--rule);
+            margin-top: 3rem;
+            padding: 1.2rem 0;
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+
+        @media (max-width: 600px) {
+            .date { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead">
+        <p class="masthead-eyebrow">A curated digest by Sara Alvarez</p>
+        <h1>Alvarez's NewsFix</h1>
+        <hr class="masthead-rule">
+        <p class="masthead-dateline">Updated July 01, 2026 at 04:38 PM &nbsp;·&nbsp; 5 stories ranked by relevance</p>
+    </header>
+
+    <div class="subhead-bar">Philadelphia &nbsp;·&nbsp; Big Tech &nbsp;·&nbsp; Civil Rights &nbsp;·&nbsp; Detroit &nbsp;·&nbsp; Consumer Safety &nbsp;·&nbsp; And More</div>
+
+    <main class="container">
+        <p class="section-label">Today's Ranked Stories</p>
+        
+        <article class="story">
+            <div class="story-meta">
+                <span class="rank">#1</span>
+                <span class="category">Civil Rights</span>
+                <span class="source">ProPublica</span>
+                <span class="date">2026-07-01</span>
+            </div>
+            <h2 class="headline"><a href="https://www.propublica.org/article/supreme-court-shadow-docket-rulings-milestone" target="_blank">A Troubling Milestone: Most Supreme Court Rulings Are Secretive Votes With Little Justification</a></h2>
+            <div class="tags">Matched: protest, protests</div>
+        </article>
+        
+        <article class="story">
+            <div class="story-meta">
+                <span class="rank">#2</span>
+                <span class="category">Consumer Safety</span>
+                <span class="source">6abc RSS Feed</span>
+                <span class="date">2026-07-01</span>
+            </div>
+            <h2 class="headline"><a href="https://abc11.com/post/potato-chip-recall-upgraded-highest-fda-risk-level-salmonella-concerns/19397108/" target="_blank">Potato chip recall upgraded to highest FDA risk level over salmonella concerns</a></h2>
+            <div class="tags">Matched: recall</div>
+        </article>
+        
+        <article class="story">
+            <div class="story-meta">
+                <span class="rank">#3</span>
+                <span class="category">Detroit</span>
+                <span class="source">The Verge</span>
+                <span class="date">2026-07-01</span>
+            </div>
+            <h2 class="headline"><a href="https://www.theverge.com/cs/features/938196/rivian-r2-ev-factory-supply-chain" target="_blank">Range anxiety</a></h2>
+            <div class="tags">Matched: detroit</div>
+        </article>
+        
+        <article class="story">
+            <div class="story-meta">
+                <span class="rank">#4</span>
+                <span class="category">Philadelphia</span>
+                <span class="source">WHYY</span>
+                <span class="date">2026-07-01</span>
+            </div>
+            <h2 class="headline"><a href="https://whyy.org/articles/all-star-game-2026-philadelphia-events-citizens-bank-park/" target="_blank">MLB All-Star Game 2026: Everything happening in Philly, from the midsummer classic to the Home Run Derby and more</a></h2>
+            <div class="tags">Matched: philadelphia, philly</div>
+        </article>
+        
+        <article class="story">
+            <div class="story-meta">
+                <span class="rank">#5</span>
+                <span class="category">Big Tech</span>
+                <span class="source">The Verge</span>
+                <span class="date">2026-07-01</span>
+            </div>
+            <h2 class="headline"><a href="https://www.theverge.com/tech/960047/getty-shutterstock-merger-agreement-termination" target="_blank">Cleared by the US, derailed by the UK: Getty’s Shutterstock merger falls apart</a></h2>
+            <div class="tags">Matched: antitrust</div>
+        </article>
+        
+        
+    </main>
+
+    <footer class="footer">
+        Alvarez's NewsFix &nbsp;·&nbsp; Powered by Miniflux &amp; a custom scoring algorithm &nbsp;·&nbsp; <a href="https://github.com/alvarez-sarah/rss-filter" style="color:inherit">View source on GitHub</a>
+    </footer>
+</body>
+</html>
